@@ -5,12 +5,18 @@ use Illuminate\Support\Collection;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 
 new #[Layout('layouts::app')]
 #[Title('Posts')]
 class extends Component
 {
+    #[Rule('required')]
+    public $title = '';
+    #[Rule('required')]
+    public $content = '';
+
     #[Computed]
     public function posts(): Collection
     {
@@ -25,6 +31,18 @@ class extends Component
 
         unset($this->posts);
     }
+
+    public function save()
+    {
+        $this->validate();
+
+        Post::create([
+            'title' => $this->title,
+            'content' => $this->content
+        ]);
+
+        $this->redirect('/posts');
+    }
 };
 ?>
 
@@ -35,13 +53,19 @@ class extends Component
                 /posts
             </p>
 
-            <h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                Posts from the database
-            </h1>
-
-            <p class="mt-6 text-lg leading-8 text-slate-300">
-                This page reads directly from the <code>posts</code> table using a Livewire v4 computed property, then renders each record in a framed list.
-            </p>
+            
+            <form wire:submit="save">
+                <input type="text" placeholder="Title here ...." wire:model="title">
+                @error('title') <em>{{ $message }}</em> @enderror
+                <input type="text" placeholder="content here ...."wire:model="content">
+                <small>Words:
+                    <span x-text="$wire.content.split(' ').length - 1"></span>
+                </small>
+                @error('content') <em>{{ $message }}</em> @enderror
+                <button type="submit">Add Post</button>
+                
+            </form>
+            <button x-on:click="$wire.title = '' ">Clear</button>
         </div>
 
         <div class="mt-10 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-cyan-950/20 backdrop-blur sm:p-8">

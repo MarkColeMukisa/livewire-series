@@ -10,4 +10,4 @@ Route::livewire('/posts', 'pages::posts')->name('posts');
 
 Route::livewire('/test', Todo::class);
 
-Route::livewire('/users', 'user.index');
+Route::livewire('/users', 'user.index')->name('users');

@@ -25,5 +25,9 @@ new class extends Component
                 <a href="{{ route('posts') }}"
                 @class(['text-red-500' => request()->is('posts')])
                 >Posts</a>
+
+                 <a href="{{ route('users') }}"
+                @class(['text-red-500' => request()->is('users')])
+                >Users</a>
     </nav>
 </div>
