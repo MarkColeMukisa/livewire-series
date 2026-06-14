@@ -2,10 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function () {
-    return view('home');
-});
+Route::livewire('/', 'pages::welcome')->name('home');
+Route::livewire('/hello', 'pages::hello')->name('hello');
+Route::livewire('/counter', 'pages::counter')->name('counter');
+Route::livewire('/todo', 'pages::todo')->name('todo');
