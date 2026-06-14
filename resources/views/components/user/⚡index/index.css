@@ -1,0 +1,33 @@
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border: 1px solid rgb(226 232 240);
+    border-radius: 0.75rem;
+    background: white;
+    box-shadow: 0 10px 30px rgb(15 23 42 / 0.08);
+}
+
+.users-table thead {
+    background: rgb(15 23 42);
+    color: white;
+}
+
+.users-table th,
+.users-table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgb(226 232 240);
+}
+
+.users-table tbody tr:nth-child(even) {
+    background: rgb(248 250 252);
+}
+
+.users-table tbody tr:hover {
+    background: rgb(224 242 254);
+}
+
+.users-table tbody tr:last-child td {
+    border-bottom: 0;
+}

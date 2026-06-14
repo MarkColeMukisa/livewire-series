@@ -26,7 +26,7 @@ class extends Component
                 Each route below renders one of the Livewire components you already created, with the layout coming from <code>resources/views/layouts/app.blade.php</code>.
             </p>
 
-            <nav class="mt-10 grid gap-4 sm:grid-cols-3">
+            <nav class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 <a
                     class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-lg font-medium text-white transition hover:border-cyan-300/40 hover:bg-white/10"
                     href="{{ route('hello') }}"
@@ -49,6 +49,14 @@ class extends Component
                 >
                     /todo
                     <span class="mt-1 block text-sm font-normal text-slate-300">Renders the todo component</span>
+                </a>
+
+                <a
+                    class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-lg font-medium text-white transition hover:border-cyan-300/40 hover:bg-white/10"
+                    href="{{ route('posts') }}"
+                >
+                    /posts
+                    <span class="mt-1 block text-sm font-normal text-slate-300">Renders the posts index page</span>
                 </a>
             </nav>
         </div>
